@@ -4,7 +4,7 @@ from datetime import date, timedelta
 
 from django.core.management.base import BaseCommand
 
-from medical.models import Patient, Medication
+from medical.models import Patient, Medication, Prescription
 
 
 def random_date(start_year=1940, end_year=2025):
@@ -17,15 +17,19 @@ def random_date(start_year=1940, end_year=2025):
 class Command(BaseCommand):
     Patient.objects.all().delete()
     Medication.objects.all().delete()
-    help = "Seed the database with demo Patients and Medications"
+    Prescription.objects.all().delete()
+
+    help = "Seed the database with demo Patients, Medications and Prescriptions"
 
     def add_arguments(self, parser):
         parser.add_argument("--patients", type=int, default=10)
         parser.add_argument("--medications", type=int, default=5)
+        parser.add_argument("--prescriptions", type=int, default=10)
 
     def handle(self, *args, **options):
         n_patients = options["patients"]
         n_meds = options["medications"]
+        n_prescriptions = options["prescriptions"]
 
         last_names = [
             "Martin", "Bernard", "Thomas", "Petit", "Robert",
@@ -86,6 +90,34 @@ class Command(BaseCommand):
             m = Medication.objects.create(code=code, label=label, status=status)
             created_meds.append(m)
 
+
+        statuses = [
+            Prescription.STATUS_VALID,
+            Prescription.STATUS_PENDING,
+            Prescription.STATUS_SUPPR,
+        ]
+
+        created_prescriptions = []
+        for _ in range(n_prescriptions):
+            patient = random.choice(created_patients)
+            medication = random.choice(created_meds)
+
+            start_date = random_date(2023, 2026)
+            end_date = start_date + timedelta(days=random.randint(1, 90))
+
+            p = Prescription.objects.create(
+                patient=patient,
+                medication=medication,
+                start_date=start_date,
+                end_date=end_date,
+                status=random.choice(statuses),
+                comment="Demo prescription",
+            )
+            created_prescriptions.append(p)
+
         self.stdout.write(self.style.SUCCESS(
-            f"Created {len(created_patients)} patients and {len(created_meds)} medications."
+            f"Created  \
+            {len(created_patients)} patients, \
+            {len(created_meds)} medications and \
+            {len(created_prescriptions)} prescriptions"
         ))
