@@ -36,7 +36,7 @@ class Medication(models.Model):
         return f"{self.code} - {self.label} ({self.status})"
 
 
-class Prescription(models.Model):
+class  Prescription(models.Model):
     """Représente une préscription"""
 
     STATUS_VALID = "valide"
@@ -52,8 +52,8 @@ class Prescription(models.Model):
     medication = models.ForeignKey(Medication, on_delete=models.CASCADE, null=False, blank=False)
     start_date = models.DateField(null=False, blank=False)
     end_date = models.DateField(null=False, blank=False)
-    status = models.CharField(max_length=16, choices=STATUS_CHOICES, default=STATUS_VALID, null=False, blank=False)
-    comment = models.CharField(max_length=255, null=True, blank=True)
+    status = models.CharField(max_length=16, choices=STATUS_CHOICES, default=STATUS_VALID)
+    comment = models.CharField(max_length=255, blank=True)
 
     def clean(self):
         #La date de fin doit être postérieure ou égale à la date de début
