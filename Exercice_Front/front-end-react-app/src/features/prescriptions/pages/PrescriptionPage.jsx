@@ -8,7 +8,7 @@ import {
   DisplayTable,
   FilterBar
 } from "features/prescriptions/components";
-import { buildQueryParams } from "features/prescriptions/utils/resetFilters";
+import { buildQueryParams } from "features/prescriptions/utils/utils";
 
 const PrescriptionPage = () => {
     const [reloadKey, setReloadKey] = useState(0);
