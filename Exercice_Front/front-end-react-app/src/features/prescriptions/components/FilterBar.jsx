@@ -51,12 +51,13 @@ const FilterBar = ({
                 >
                 Réinitialiser
                 </button>
-                <button 
+                <button
                 type="button"
                 onClick={() => {
                     displayCreateModal();
                     setActionType("create");
                 }}>
+                Nouvelle prescription
                 </button>
             </div>
         </form>

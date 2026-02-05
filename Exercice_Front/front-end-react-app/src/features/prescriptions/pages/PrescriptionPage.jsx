@@ -11,6 +11,7 @@ import {
 import { buildQueryParams } from "features/prescriptions/utils/resetFilters";
 
 const PrescriptionPage = () => {
+    const [reloadKey, setReloadKey] = useState(0);
     const [items, setItems] = useState([]);
     const [page, setPage] = useState(1);
     const [count, setCount] = useState(0);
@@ -55,7 +56,7 @@ const PrescriptionPage = () => {
             setCount(data.count);
         })
         .catch(err => console.error(err));
-    }, [page, filterForm]);
+    }, [page, filterForm, reloadKey]);
 
     useEffect(() => {
         fetch("http://127.0.0.1:8000/Medication")
@@ -119,6 +120,7 @@ const PrescriptionPage = () => {
             setShowModal(false);
             })
             .catch(() => toast.error("Échec création"));
+        setReloadKey(k => k + 1);
     };
 
     const updatePrescription = () => {
@@ -141,10 +143,30 @@ const PrescriptionPage = () => {
             setShowModal(false);
             })
             .catch(() => toast.error("Échec mise à jour"));
+        setReloadKey(k => k + 1);
+    };
+
+    const formDataIsValid = () => {
+        if (!formData) return false;
+
+        if (
+            formData.patient === null ||
+            formData.medication === null ||
+            formData.start_date === "" ||
+            formData.end_date === "" ||
+            formData.status === ""
+        ) return false;
+
+        return new Date(formData.start_date) <= new Date(formData.end_date);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (!formDataIsValid()){
+            toast.error("Une ou plusieurs erreurs dans le formulaire");
+            return false;
+        }
 
         if (actionType === "create") {
             createPrescription();

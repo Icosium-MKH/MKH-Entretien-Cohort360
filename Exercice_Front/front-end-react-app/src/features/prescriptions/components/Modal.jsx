@@ -43,7 +43,7 @@ const Modal = ({
             <label>
                 Médicament
                 <select
-                    value={formData.medications ?? ""}
+                    value={formData.medication ?? ""}
                     onChange={(e) =>
                         setFormData(prev => ({
                         ...prev,

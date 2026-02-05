@@ -1,4 +1,9 @@
 const DisplayTable = ({items=[], displayEditModal, setActionType}) => {
+    const status_matcher = {
+        "valide": "Valide",
+        "en_attente": "En attente",
+        "suppr": "Supprimée",
+    }
     return (
         <table>
             <thead>
@@ -27,7 +32,7 @@ const DisplayTable = ({items=[], displayEditModal, setActionType}) => {
                     <td>{item.medication_name}</td>
                     <td>{item.start_date}</td>
                     <td>{item.end_date}</td>
-                    <td>{item.status}</td>
+                    <td>{status_matcher[item.status]}</td>
                     <td>{item.comment}</td>
                     </tr>
                 ))}
