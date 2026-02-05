@@ -20,7 +20,7 @@ class ApiListTests(TestCase):
         medication2 = Medication.objects.create(code="IBU200", label="Ibuprofène 200mg", status=Medication.STATUS_SUPPR)
 
         #Prescriptions
-        prescription1 = Prescription.objects.create(
+        Prescription.objects.create(
             patient=patient1,
             medication=medication1,
             start_date=date.today(),
@@ -28,7 +28,7 @@ class ApiListTests(TestCase):
             status=Prescription.STATUS_VALID,
             comment="test prescription 001"
         )
-        prescription2 = Prescription.objects.create(
+        Prescription.objects.create(
             patient=patient2,
             medication=medication1,
             start_date=date.today(),
@@ -36,7 +36,7 @@ class ApiListTests(TestCase):
             status=Prescription.STATUS_PENDING,
             comment="test prescription 001"
         )
-        prescription3 = Prescription.objects.create(
+        Prescription.objects.create(
             patient=patient3,
             medication=medication2,
             start_date=date.today(),
