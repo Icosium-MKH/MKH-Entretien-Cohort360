@@ -1,0 +1,39 @@
+.header-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-nav ul{
+    display: inline-flex;
+    gap: 3rem;
+    list-style: none;
+}
+
+.header-logo img {
+    width: 8rem;
+}
+
+.header-nav a,
+.header-sign a {
+  all: unset;
+  cursor: pointer;
+}
+
+.header-nav a,
+.header-sign a {
+  font-size: 0.9rem;     /* ou 14px */
+  font-weight: 500;
+}
+
+.header-container a {
+    transition: transform 1s ease;
+}
+
+.header-container a:hover {
+    color: brown;
+}
+

@@ -1,6 +1,7 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 from rest_framework.viewsets import ModelViewSet
+from .utils import PrescriptionPagination
 
 from .models import Patient, Medication, Prescription
 from .filters import PatientFilter, MedicationFilter
@@ -28,14 +29,15 @@ class MedicationViewSet(viewsets.ReadOnlyModelViewSet):
 class PrescriptionViewSet(ModelViewSet):
     queryset = Prescription.objects.all()
     serializer_class = PrescriptionSerializer
+    pagination_class = PrescriptionPagination
 
     filter_backends = [DjangoFilterBackend]
     filterset_fields = {
         "patient": ["exact"],
         "medication": ["exact"],
         "status": ["exact"],
-        "start_date": ["gte", "lte"],
-        "end_date": ["gte", "lte"],
+        "start_date": ["gte"],
+        "end_date": ["lte"],
     }
 
     """COMM_MKH
