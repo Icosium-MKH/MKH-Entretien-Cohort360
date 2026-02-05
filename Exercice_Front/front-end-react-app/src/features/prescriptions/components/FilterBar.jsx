@@ -1,3 +1,5 @@
+import "./FilterBar.css"
+
 const FilterBar = ({
     handleFilterChange,
     patient=[],

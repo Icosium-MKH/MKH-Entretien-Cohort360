@@ -1,0 +1,49 @@
+.filter-part {
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+    padding: 0.5rem 0.5rem;
+    border: 1rem;
+    background-color: #114694;
+    color: white;
+    border-radius: 0.5rem;
+}
+
+.filterForm-fields {
+    display: flex;
+}
+
+.filter-part label {
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.filter-part label:first-child {
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.filter-part input,
+.filter-part select {
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+    border: solid 1px black;
+}
+
+.filterForm-ctrl-btns button {
+    padding: 0.3rem 0.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    background-color: #7092BE;
+    color: white;
+}
+
+.filterForm-ctrl-btns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    width: 100%;
+    height: fit-content;
+}

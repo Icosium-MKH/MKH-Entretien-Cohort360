@@ -1,0 +1,32 @@
+table {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+}
+
+td {
+    font-family: Monospace;
+}
+
+thead tr {
+  border-bottom: 1rem solid transparent;
+}
+
+tbody tr {
+    transition: transform 0.2s ease, font-weight 0.2s ease;
+    border-bottom: 0.3rem solid transparent;
+}
+
+tbody tr:hover {
+    transform: translateX(-0.2rem);
+    font-weight: 600;
+}
+
+tbody button {
+    background-color: #7092BE;
+    border: none;
+    border-radius: 15%;
+    color: white;
+    cursor: pointer;
+}

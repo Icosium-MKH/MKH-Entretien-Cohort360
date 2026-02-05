@@ -1,0 +1,50 @@
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    min-width: 400px;
+}
+
+.modal label {
+    display: flex;
+    gap: 1rem;
+}
+
+.modal input {
+    border-radius: 0.2rem;
+    border: solid 1px black;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.cancel-update,
+.save-update {
+    padding: 0.3rem 0.5rem;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
+.cancel-update {
+    background-color: red;
+}
+
+.save-update {
+    background-color: green;
+}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import "./Modal.css"
 
 const Modal = ({
   actionType,
@@ -10,7 +10,6 @@ const Modal = ({
   onSubmit,
   onChange
 }) => {
-    const [patientInput, setPatientInput] = useState("");
     return (
         <div className="modal-overlay">
             <form className="modal" onSubmit={onSubmit}>

@@ -1,3 +1,5 @@
+import "./DisplayTable.css"
+
 const DisplayTable = ({items=[], displayEditModal, setActionType}) => {
     const status_matcher = {
         "valide": "Valide",
